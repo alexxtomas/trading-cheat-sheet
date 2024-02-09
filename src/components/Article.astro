@@ -11,9 +11,9 @@ export interface ArticleProps {
 
 const {title, images} = Astro.props
 ---
-<article class="w-full flex flex-col gap-10">
+<article class="w-full flex flex-col gap-8">
   <header class="text-center">
-  <h2 class="text-4xl">{title}</h2>
+  <h2 class="text-2xl">{title}</h2>
 </header>
   <section class="flex justify-around w-full">
     {
@@ -23,14 +23,12 @@ const {title, images} = Astro.props
         const [englishName, spanishName] = key.split("/").at(-1)?.replace(/\d+(-|.)|\.(png|jpg|jpeg|gif|bmp|tiff)/g 
 , "").split("|") ?? []
 
-
-        console.log({key: key.split})
         return (
           <div class="flex flex-col gap-4 items-center">
-          <Image data-tooltip-target="tooltip-default" src={src} alt={'A bullish candle'}  />
+          <Image  src={src} alt={'A bullish candle'}   />
           <footer class="text-center">
-            <h3 class="text-xl leading-6">🇺🇸 {englishName} 🇺🇸</h3>
-            <h3 class="text-xl leading-10">🇪🇸 {spanishName} 🇪🇸</h3>
+            <h3 class="text-md leading-6">🇺🇸 {englishName} 🇺🇸</h3>
+            <h3 class="text-md leading-10">🇪🇸 {spanishName} 🇪🇸</h3>
           </footer>
           </div>
         )

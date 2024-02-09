@@ -19,8 +19,20 @@ const {title, images} = Astro.props
     {
       Object.keys(images).map((key) =>{
         const src = images[key]()
+        // Extract the name of the image from the key
+        const [englishName, spanishName] = key.split("/").at(-1)?.replace(/\d+(-|.)|\.(png|jpg|jpeg|gif|bmp|tiff)/g 
+, "").split("|") ?? []
+
+
+        console.log({key: key.split})
         return (
-          <Image src={src} alt={'A bullish candle'}  />
+          <div class="flex flex-col gap-4 items-center">
+          <Image data-tooltip-target="tooltip-default" src={src} alt={'A bullish candle'}  />
+          <footer class="text-center">
+            <h3 class="text-xl leading-6">🇺🇸 {englishName} 🇺🇸</h3>
+            <h3 class="text-xl leading-10">🇪🇸 {spanishName} 🇪🇸</h3>
+          </footer>
+          </div>
         )
       })
     }

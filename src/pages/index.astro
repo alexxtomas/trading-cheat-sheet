@@ -3,19 +3,24 @@ import Article, { type ArticleProps } from '../components/Article.astro';
 import Layout from '../layouts/Layout.astro';
 
 const bullishCandlesImages = import.meta.glob<{default: ImageMetadata}>('/src/assets/images/bullish-candles/*.{jpeg,jpg,png,gif}')
+const bearishCandlesImages = import.meta.glob<{default: ImageMetadata}>('/src/assets/images/bearish-candles/*.{jpeg,jpg,png,gif}')
 
 const ARTICLES: ArticleProps[] = [
 	{
 		title: 'Bullish Candles',
 		images: bullishCandlesImages,
-	}
+	},
+	{
+		title: 'Bearish Candles',
+		images: bearishCandlesImages,
+	},
 ]
 
 
 ---
 
 <Layout title="Cheat Sheet">
-	<main class="h-screen w-screen flex flex-col items-center justify-center ">
+	<main class="h-screen w-screen flex flex-col items-center justify-evenly">
 		{
 			ARTICLES.map((article, index) => (
 				<Article key={index} {...article} />
